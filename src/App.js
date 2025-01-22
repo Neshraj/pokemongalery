@@ -4,6 +4,7 @@ import './App.css';
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
   const URL = 'https://pokeapi.co/api/v2/pokemon?limit=100';
 
   useEffect(() => {
@@ -17,6 +18,7 @@ const App = () => {
         })
       );
       setPokemons(detailedPokemons);
+      setLoading(false);
     };
     fetchPokemons();
   }, []);
@@ -40,14 +42,18 @@ const App = () => {
           value={searchTerm}
         />
       </header>
-      <div className="pokemon-container">
-        {filteredPokemons.map((pokemon) => (
-          <div key={pokemon.id} className="pokemon-card">
-            <img src={pokemon.sprites.front_default} alt={pokemon.name} className="pokemon-image" />
-            <h2>{pokemon.name}</h2>
-          </div>
-        ))}
-      </div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="pokemon-container">
+          {filteredPokemons.map((pokemon) => (
+            <div key={pokemon.id} className="pokemon-card">
+              <img src={pokemon.sprites.front_default} alt={pokemon.name} className="pokemon-image" />
+              <h2>{pokemon.name}</h2>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
