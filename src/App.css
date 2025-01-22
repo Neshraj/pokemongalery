@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.App-header input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 400px;
+  margin-top: 10px;
+  outline: none;
+}
+
+.pokemon-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.pokemon-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+}
+
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background-color: #f8f8f8;
+  margin: 10px auto;
+  display: block;
+}
+
+.pokemon-card h2 {
+  font-size: 1.2em;
+  margin: 10px 0;
+  text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+  .App-header input {
+    width: 90%;
+  }
+}
